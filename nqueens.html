@@ -6,35 +6,35 @@
 <link rel="stylesheet" href="style.css">
 
 </head>
-
-<body>
-<h2>Enter Your Name</h2>
-
-<input id="playerName" placeholder="Enter name">
-
-<button onclick="startGame()">Start Game</button>
-
-<p id="info"></p>
-
-<div id="board"></div>
-
-<button onclick="resetGame()">Reset</button>
-<button onclick="showHint()">Hint</button>
-
 <h1 class="title">N Queens Puzzle</h1>
 
-<input id="size" type="number" placeholder="Enter N (≥4)">
+<div id="start-screen">
+
+<h2>Enter Your Name</h2>
+
+<input id="playerName" placeholder="Enter your name">
+
+<h3>Board Size</h3>
+
+<input id="size" type="number" value="4">
 
 <br><br>
 
 <button onclick="startGame()">Start Game</button>
 
+</div>
+
+<div id="game-screen" style="display:none;">
+
 <p id="info"></p>
 
 <div id="board"></div>
 
-<script src="script.js"></script>
+<br>
 
-</body>
+<button onclick="resetGame()">Reset</button>
+<button onclick="showHint()">Hint</button>
 
+</div>
 </html>
+
