@@ -1,12 +1,18 @@
+let player=""
 let n
 let queens=[]
 let chances=3
 
 function startGame(){
 
-n=parseInt(document.getElementById("size").value)
+player=document.getElementById("playerName").value
 
-if(n<=3) return
+if(player==""){
+alert("Please enter your name")
+return
+}
+
+n=parseInt(document.getElementById("size").value)
 
 queens=[]
 chances=3
@@ -73,17 +79,35 @@ return
 }
 
 }
-
 if(!safe(r,c)){
 
 chances--
 
-document.getElementById("info").innerText="Wrong move! Chances: "+chances
+document.getElementById("info").innerText =
+"Wrong move! Chances left: "+chances
 
-if(chances==0)
-document.getElementById("info").innerText="Game Over!"
+if(chances==0){
+
+document.getElementById("info").innerText =
+player + " lost! Showing solution..."
+
+showSolution()
+
+}
 
 return
+}
+function showSolution(){
+
+let solution = solveNQueen()
+
+solution.forEach(pos=>{
+
+let index = pos[0]*n + pos[1]
+
+document.querySelectorAll(".square")[index].innerText="♛"
+
+})
 
 }
 
@@ -93,13 +117,44 @@ queens.push([r,c])
 
 if(queens.length==n){
 
-let player = localStorage.getItem("playerName")
-
-document.getElementById("status").innerText =
+document.getElementById("info").innerText =
 player + " won the game! Hurray! 🎉"
+
 showConfetti()
 
 }
+}
+function resetGame(){
+
+queens=[]
+chances=3
+
+drawBoard()
+
+document.getElementById("info").innerText="Game Reset"
+
+}
+function showHint(){
+
+let solution = solveNQueen()
+
+for(let pos of solution){
+
+let r=pos[0]
+let c=pos[1]
+
+if(!queens.some(q=>q[0]==r && q[1]==c)){
+
+let index=r*n+c
+
+document.querySelectorAll(".square")[index].style.background="yellow"
+
+break
+
+}
+
+}
+
 }
 function showConfetti(){
 
@@ -119,5 +174,6 @@ document.body.appendChild(conf)
 setTimeout(()=>conf.remove(),3000)
 
 }
+
 
 }
