@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>AmazonSteale Game Station</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<h1 class="title">AmazonSteale Game Station</h1>
+
+<div class="games">
+
+<div class="game-card" onclick="openGame('nqueens.html')">
+<h2>♟ N Queens</h2>
+<p>Strategic chess puzzle</p>
+</div>
+
+<div class="game-card" onclick="openGame('tictactoe.html')">
+<h2>❌ Tic Tac Toe</h2>
+<p>Classic 2 player game</p>
+</div>
+
+<div class="game-card" onclick="openGame('memory.html')">
+    <h2>🧠 Memory Game</h2>
+    <p>Test your memory</p>
+</div>
+
+<div class="game-card" onclick="openGame('sudoku.html')">
+<h2>🔢 Sudoku</h2>
+<p>Number puzzle challenge</p>
+</div>
+
+</div>
+<div id="user-section">
+
+<h2>Welcome to AmazonSteale Game Station</h2>
+
+<input id="username" placeholder="Enter your name">
+
+<button onclick="saveUser()">Start Playing</button>
+
+<p id="welcome"></p>
+
+</div>
+
+
+<script>
+
+function openGame(page){
+window.location.href = page
+}
+
+</script>
+<script>
+
+function saveUser(){
+
+let name = document.getElementById("username").value
+
+if(name === "") return
+
+localStorage.setItem("playerName", name)
+
+document.getElementById("welcome").innerText =
+"Welcome " + name + "! Choose a game below 🎮"
+
+}
+
+function openGame(page){
+
+let player = localStorage.getItem("playerName")
+
+if(!player){
+
+alert("Please enter your name first!")
+
+return
+
+}
+
+window.location.href = page
+
+}
+
+</script>
+
+
+</body>
+</html>

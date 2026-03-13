@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Sudoku</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+#sudoku-board{
+
+display:grid;
+grid-template-columns:repeat(9,40px);
+gap:0px;
+justify-content:center;
+margin-top:20px;
+
+}
+
+.cell{
+
+width:40px;
+height:40px;
+text-align:center;
+font-size:18px;
+border:1px solid black;
+
+}
+
+/* Thick borders for 3x3 boxes */
+
+.cell:nth-child(3n){
+border-right:3px solid black;
+}
+
+.cell:nth-child(9n){
+border-right:3px solid black;
+}
+
+#sudoku-board input:nth-child(n+19):nth-child(-n+27),
+#sudoku-board input:nth-child(n+46):nth-child(-n+54){
+border-bottom:3px solid black;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1 class="title">Sudoku Puzzle</h1>
+
+<select id="difficulty">
+<option value="30">Easy</option>
+<option value="40">Medium</option>
+<option value="50">Hard</option>
+</select>
+
+<br><br>
+
+<button onclick="generateSudoku()">Generate Puzzle</button>
+<button onclick="checkSolution()">Check Solution</button>
+
+<div id="sudoku-board"></div>
+
+<p id="result"></p>
+
+<script src="sudoku.js"></script>
+
+</body>
+</html>
