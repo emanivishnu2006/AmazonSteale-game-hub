@@ -1,6 +1,26 @@
+let p1=""
+let p2=""
+let current="X"
+
 let board = ["","","","","","","","",""]
 
-let currentPlayer = "X"
+function startGame(){
+
+p1=document.getElementById("player1").value
+p2=document.getElementById("player2").value
+
+if(p1=="" || p2==""){
+alert("Enter both names")
+return
+}
+
+drawBoard()
+
+}
+
+
+
+
 
 function drawBoard(){
 
@@ -32,10 +52,10 @@ board[index]=currentPlayer
 
 if(checkWinner()){
 
-let player = localStorage.getItem("playerName")
+let winner = current=="X" ? p1 : p2
 
 document.getElementById("status").innerText =
-player + " won the game! Hurray! 🎉"
+winner + " won the game! 🎉"
 showConfetti()                                                                  
 drawBoard()
 return
@@ -90,5 +110,6 @@ document.getElementById("status").innerText=""
 drawBoard()
 
 }
+
 
 drawBoard()
