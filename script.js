@@ -14,6 +14,9 @@ return
 
 n=parseInt(document.getElementById("size").value)
 
+document.getElementById("start-screen").style.display="none"
+document.getElementById("game-screen").style.display="block"
+
 queens=[]
 chances=3
 
@@ -177,3 +180,4 @@ setTimeout(()=>conf.remove(),3000)
 
 
 }
+
