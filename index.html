@@ -24,8 +24,8 @@
 </div>
 
 <div class="game-card" onclick="openGame('memory.html')">
-    <h2>🧠 Memory Game</h2>
-    <p>Test your memory</p>
+<h2>🧠 Memory Game</h2>
+<p>Test your memory</p>
 </div>
 
 <div class="game-card" onclick="openGame('sudoku.html')">
@@ -33,8 +33,7 @@
 <p>Number puzzle challenge</p>
 </div>
 
-
-
+</div>
 
 <script>
 
@@ -43,40 +42,6 @@ window.location.href = page
 }
 
 </script>
-<script>
-
-function saveUser(){
-
-let name = document.getElementById("username").value
-
-if(name === "") return
-
-localStorage.setItem("playerName", name)
-
-document.getElementById("welcome").innerText =
-"Welcome " + name + "! Choose a game below 🎮"
-
-}
-
-function openGame(page){
-
-let player = localStorage.getItem("playerName")
-
-if(!player){
-
-alert("Please enter your name first!")
-
-return
-
-}
-
-window.location.href = page
-
-}
-
-</script>
-
 
 </body>
-
 </html>
